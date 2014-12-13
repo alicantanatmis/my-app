@@ -40,8 +40,44 @@
 
 	
 	<script src="https://maps.googleapis.com/maps/api/js"></script>
+	<script src="./Theme Template for Bootstrap_files/jquery.min.js"></script>
     <script>
+	
+	var deneme;
+
+
+	
+	$.ajax
+  ({
+  type: "GET",
+  url: "http://localhost:8080",
+  crossDomain: true, 
+  ContentType: "x-application/json",
+  dataType: "json",
+  async: false,
+  success: function(json){
+ 	  alert("Success");
+      alert("ajax callback response:"+JSON.stringify(json));
+	  deneme=json;
+	  alert(deneme);
+	  },
+  error: function(jqXHR, textStatus, errorThrown){
+		alert("Error");
+		console.log(JSON.stringify(jqXHR));
+        console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+	}
+  });
+
+	//alert("Success");
+
 	var map;
+	var locationArray = [];
+	
+	for(var i in deneme){
+		var array = [deneme[i].latitude, deneme[i].longitude]
+		locationArray.push(array);
+	}
+	
 	function initialize() {
   var mapOptions = {
     zoom: 14
@@ -57,10 +93,7 @@
                                        position.coords.longitude);
 
     var marker, i;
-	var locations = [
-		[42.3770030,-71.1166600],
-		[42.3884000,-71.1191490]
-		];
+	var locations = locationArray;
 	var image = 'icons/beachflag.png';
 	
 	//users nearby
@@ -68,7 +101,7 @@
       marker = new google.maps.Marker({
         position: new google.maps.LatLng(locations[i][0], locations[i][1]),
         map: map,
-		title: 'Tut ucundan!',
+		title: deneme[i].task_id.toString(),
 		icon: image
       });
 	}  
