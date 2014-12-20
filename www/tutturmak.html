@@ -10,7 +10,10 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
 	<!-- Bootstrap theme -->
     <link href="css/bootstrap-theme.min.css" rel="stylesheet">
-
+	<!-- DateTimePicker theme -->
+    <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+	
+	
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -24,7 +27,7 @@
         height: 250px;
       }
     </style>
-	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	
 	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
 	<script src="maps/geocoder.js"></script>
   </head>
@@ -83,7 +86,7 @@
 				</div>				
 				<div class="row">					
 					<div class="col-xs-9">
-						<input id="address" class="form-control" type="text" placeholder="Ankara">
+						<input id="address" class="form-control" type="text" placeholder="Birlik mah. 5. cadde No:52">
 					</div>
 					<div class="col-xs-3">
 						<button class="btn btn-primary col-xs-12" type="button" value="Haritada Bul" onclick="codeAddress()">Bul</button>
@@ -92,8 +95,46 @@
 			</div>
 			<div class="form-group">
 				<div id="map-canvas"></div>
-			</div>			
-
+			</div>
+			<div class="form-group">
+				<div class="row">
+					<div class="col-xs-5">
+						<label for="datgetimepicker1">Baslangic:</label>
+						<div class='input-group date' id='datetimepicker1'>
+							<input type='text' class="form-control"/>
+							<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+							</span>
+						</div>
+					</div>
+					<div class="col-xs-5">
+						<label for="datgetimepicker2">Bitis:</label>
+						<div class='input-group date' id='datetimepicker2'>
+							<input type='text' class="form-control"/>
+							<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+							</span>
+						</div>
+					</div>					
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="row">
+					<div class="col-xs-5">
+						<label for="repeat">Gorev kac kere yapilabilir:</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-5">
+						<input type="number" class="form-control" id="repeat" placeholder="Or: 3" min="1">
+					</div>
+					<div class="col-xs-5">					
+						<div class="checkbox">
+							<label>
+								<input type="checkbox" id="sinirsiz" onclick="sinirsizFun()">Sinirsiz
+							</label>
+						</div>
+					</div>
+				</div>
+			</div>
 			<button type="submit" class="btn btn-success col-xs-6 col-xs-offset-3">Fisekle</button>
 		</form>
 	</div>
@@ -102,6 +143,32 @@
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/moment.js"></script>
+    <script src="js/bootstrap-datetimepicker.js"></script>
+    <script src="js/tr.js"></script>		
+	<script type="text/javascript">
+            $(function () {
+                $('#datetimepicker1').datetimepicker({
+				language: 'tr'});
+            });
+    </script>
+	<script type="text/javascript">
+            $(function () {
+                $('#datetimepicker2').datetimepicker({
+				language: 'tr'});
+            });
+    </script>
+	<script type="text/javascript">
+		function sinirsizFun(){
+			if (document.getElementById("sinirsiz").checked == true){
+				document.getElementById("repeat").disabled = true;
+			}
+			else {
+				document.getElementById("repeat").disabled = false;
+			}
+		}
+	</script>
+
   </body>
 </html>
