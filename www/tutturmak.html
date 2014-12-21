@@ -70,11 +70,11 @@
 				<div class="row">
 					<div class="col-xs-5">
 						<label for="para-tl">Kac TL:</label>
-						<input type="text" class="form-control" id="para-tl" placeholder="Or: 5">
+						<input type="number" class="form-control" id="para-tl" placeholder="Or: 5" min="0">
 					</div>
 					<div class="col-xs-5">
 						<label for="para-tl">Kac Kurus:</label>
-						<input type="text" class="form-control" id="para-kurus" placeholder="Or: 50">
+						<input type="number" class="form-control" id="para-kurus" placeholder="Or: 50" min="0">
 					</div>
 				</div>
 			</div>
@@ -98,16 +98,18 @@
 			</div>
 			<div class="form-group">
 				<div class="row">
-					<div class="col-xs-5">
-						<label for="datgetimepicker1">Baslangic:</label>
+					<div class="col-xs-10">
+						<label for="datgetimepicker1">Baslangic zamani:</label>
 						<div class='input-group date' id='datetimepicker1'>
 							<input type='text' class="form-control"/>
 							<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
 							</span>
 						</div>
 					</div>
-					<div class="col-xs-5">
-						<label for="datgetimepicker2">Bitis:</label>
+				</div>
+				<div class="row">
+					<div class="col-xs-10">
+						<label for="datgetimepicker2">Bitis zamani:</label>
 						<div class='input-group date' id='datetimepicker2'>
 							<input type='text' class="form-control"/>
 							<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
@@ -118,8 +120,8 @@
 			</div>
 			<div class="form-group">
 				<div class="row">
-					<div class="col-xs-5">
-						<label for="repeat">Gorev kac kere yapilabilir:</label>
+					<div class="col-xs-12">
+						<label for="repeat">Gorev toplamda kac kere yapilabilir:</label>
 					</div>
 				</div>
 				<div class="row">
@@ -135,7 +137,49 @@
 					</div>
 				</div>
 			</div>
-			<button type="submit" class="btn btn-success col-xs-6 col-xs-offset-3">Fisekle</button>
+			<div class="form-group">
+				<div class="row">
+					<div class="col-xs-12">
+						<label for="max-people">Gorev ayni anda kac kere yapilabilir:</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-5">
+						<input type="number" class="form-control" id="max-people" placeholder="Or: 2" min="1">
+					</div>
+					<div class="col-xs-5">					
+						<div class="checkbox">
+							<label>
+								<input type="checkbox" id="max-people-check" onclick="maxPeopleFun()">Sinirsiz
+							</label>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="row">
+					<div class="col-xs-12">
+						<label for="max-saat">Her gorev icin taninan maksimum zaman:</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-5">
+						<label for="max-saat">Kac saat:</label>
+						<input type="number" class="form-control" id="max-saay" placeholder="Or: 2" min="0">
+					</div>
+					<div class="col-xs-5">
+						<label for="max-dakika">Kac dakika:</label>
+						<input type="number" class="form-control" id="max-dakika" placeholder="Or: 30" min="0">
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<br></br>
+					<button type="submit" class="btn btn-success col-xs-6 col-xs-offset-3">Fisekle</button>
+					<br></br><br></br>
+				</div>
+			</div>
 		</form>
 	</div>
 	
@@ -169,6 +213,15 @@
 			}
 		}
 	</script>
-
+	<script type="text/javascript">
+		function maxPeopleFun(){
+			if (document.getElementById("max-people-check").checked == true){
+				document.getElementById("max-people").disabled = true;
+			}
+			else {
+				document.getElementById("max-people").disabled = false;
+			}
+		}
+	</script>
   </body>
 </html>
