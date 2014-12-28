@@ -21,8 +21,15 @@ function initialize() {
 	
 	marker = new google.maps.Marker({
 	map: map,
-	//position: new google.maps.LatLng(-34.397, 150.644)
+	draggable: true,
 	position: pos
+    });
+	markerLat = position.coords.latitude;
+	markerLon = position.coords.longitude;
+    google.maps.event.addListener(marker, 'dragend', function(evt) {
+		markerLat = evt.latLng.lat(); 
+		markerLon = evt.latLng.lng();
+		alert(markerLat.toString() + markerLon.toString());
     });
 	
 	map.setCenter(pos);
@@ -50,6 +57,8 @@ function codeAddress() {
           position: results[0].geometry.location,
 		  draggable: true
       });
+	  markerLat = results[0].geometry.location.lat();
+	  markerLon = results[0].geometry.location.lng();
 	  google.maps.event.addListener(marker, 'dragend', function(evt) {
 		markerLat = evt.latLng.lat(); 
 		markerLon = evt.latLng.lng();

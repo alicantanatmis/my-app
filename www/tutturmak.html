@@ -57,24 +57,24 @@
 	</nav>
 	
 	<div class="container">
-		<form role="form">
+		<form role="form" id="tuttur">
 			<div class="form-group">
 				<label for="gorev-adi">Gorev Adi:</label>
-				<input type="text" class="form-control" id="gorev-adi" placeholder="Or: Poset Tasimak">
+				<input type="text" class="form-control" name="gorev-adi" id="gorev-adi" placeholder="Or: Poset Tasimak">
 			</div>
 			<div class="form-group">
 				<label for="gorev-aciklamasi">Gorev Aciklamasi:</label>
-				<textarea rows="3" maxlength="300" class="form-control" id="gorev-aciklamasi" placeholder="Or: Alisveristen geldim, 20 tane posetim var, 5. kata cikarmak icin yardim istiyorum."></textarea>
+				<textarea rows="3" maxlength="300" class="form-control" name="gorev-aciklamasi" id="gorev-aciklamasi" placeholder="Or: Alisveristen geldim, 20 tane posetim var, 5. kata cikarmak icin yardim istiyorum."></textarea>
 			</div>
 			<div class="form-group">
 				<div class="row">
 					<div class="col-xs-5">
 						<label for="para-tl">Kac TL:</label>
-						<input type="number" class="form-control" id="para-tl" placeholder="Or: 5" min="0">
+						<input type="number" class="form-control" name="para-tl" id="para-tl" placeholder="Or: 5" min="0">
 					</div>
 					<div class="col-xs-5">
 						<label for="para-tl">Kac Kurus:</label>
-						<input type="number" class="form-control" id="para-kurus" placeholder="Or: 50" min="0">
+						<input type="number" class="form-control" name="para-kurus" id="para-kurus" placeholder="Or: 50" min="0">
 					</div>
 				</div>
 			</div>
@@ -86,7 +86,7 @@
 				</div>				
 				<div class="row">					
 					<div class="col-xs-9">
-						<input id="address" class="form-control" type="text" placeholder="Birlik mah. 5. cadde No:52">
+						<input id="address" name="address" class="form-control" type="text" placeholder="Birlik mah. 5. cadde No:52">
 					</div>
 					<div class="col-xs-3">
 						<button class="btn btn-primary col-xs-12" type="button" value="Haritada Bul" onclick="codeAddress()">Bul</button>
@@ -96,27 +96,52 @@
 			<div class="form-group">
 				<div id="map-canvas"></div>
 			</div>
+			<div class="form-group">					
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" name="has_location" id="has_location"><b>Gorev herhangi bir yerden yapilabilir</b>
+					</label>
+				</div>
+			</div>			
 			<div class="form-group">
 				<div class="row">
-					<div class="col-xs-10">
-						<label for="datgetimepicker1">Baslangic zamani:</label>
+					<div class="col-xs-6">
+						<label for="datgetimepicker1">Baslangic tarihi:</label>
 						<div class='input-group date' id='datetimepicker1'>
-							<input type='text' class="form-control"/>
+							<input type='text' name="datetimepicker1" class="form-control"/>
 							<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
 							</span>
 						</div>
 					</div>
-				</div>
-				<div class="row">
-					<div class="col-xs-10">
-						<label for="datgetimepicker2">Bitis zamani:</label>
+					<div class="col-xs-6">
+						<label for="datgetimepicker2">Baslangic saati:</label>
 						<div class='input-group date' id='datetimepicker2'>
-							<input type='text' class="form-control"/>
-							<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+							<input type='text' name="datetimepicker2" class="form-control"/>
+							<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span>
 							</span>
 						</div>
 					</div>					
 				</div>
+			</div>
+			<div class="form-group">
+				<div class="row">
+					<div class="col-xs-6">
+						<label for="datgetimepicker3">Bitis tarihi:</label>
+						<div class='input-group date' id='datetimepicker3'>
+							<input type='text' name="datetimepicker3" class="form-control"/>
+							<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+							</span>
+						</div>
+					</div>					
+					<div class="col-xs-6">
+						<label for="datgetimepicker4">Bitis saati:</label>
+						<div class='input-group date' id='datetimepicker4'>
+							<input type='text' name="datetimepicker4" class="form-control"/>
+							<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span>
+							</span>
+						</div>
+					</div>					
+				</div>				
 			</div>
 			<div class="form-group">
 				<div class="row">
@@ -126,17 +151,18 @@
 				</div>
 				<div class="row">
 					<div class="col-xs-5">
-						<input type="number" class="form-control" id="repeat" placeholder="Or: 3" min="1">
+						<input type="number" class="form-control" name="repeat" id="repeat" placeholder="Or: 3" min="1">
 					</div>
 					<div class="col-xs-5">					
 						<div class="checkbox">
 							<label>
-								<input type="checkbox" id="sinirsiz" onclick="sinirsizFun()">Sinirsiz
+								<input type="checkbox" name="sinirsiz" id="sinirsiz" onclick="sinirsizFun()"><b>Sinirsiz</b>
 							</label>
 						</div>
 					</div>
 				</div>
 			</div>
+			<!--
 			<div class="form-group">
 				<div class="row">
 					<div class="col-xs-12">
@@ -156,6 +182,7 @@
 					</div>
 				</div>
 			</div>
+			-->
 			<div class="form-group">
 				<div class="row">
 					<div class="col-xs-12">
@@ -163,13 +190,20 @@
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-xs-5">
+					<div class="col-xs-3 col-xs-offset-1">
 						<label for="max-saat">Kac saat:</label>
-						<input type="number" class="form-control" id="max-saay" placeholder="Or: 2" min="0">
+						<input type="number" class="form-control" name="max-saat" id="max-saat" placeholder="Or: 2" min="0">
 					</div>
-					<div class="col-xs-5">
+					<div class="col-xs-3">
 						<label for="max-dakika">Kac dakika:</label>
-						<input type="number" class="form-control" id="max-dakika" placeholder="Or: 30" min="0">
+						<input type="number" class="form-control" name="max-dakika" id="max-dakika" placeholder="Or: 30" min="0">
+					</div>
+					<div class="col-xs-5">					
+						<div class="checkbox">
+							<label>
+								<input type="checkbox" name="is-time-unlimited" id="is-time-unlimited" onclick="maxTime()"><b>Sinirsiz</b>
+							</label>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -190,16 +224,38 @@
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/moment.js"></script>
     <script src="js/bootstrap-datetimepicker.js"></script>
-    <script src="js/tr.js"></script>		
+    <script src="js/tr.js"></script>
+	<script src="js/tutturmak-post.js"></script>
 	<script type="text/javascript">
             $(function () {
                 $('#datetimepicker1').datetimepicker({
+				pickTime: false,
+				defaultDate:"1.1.2015",
 				language: 'tr'});
             });
     </script>
 	<script type="text/javascript">
             $(function () {
                 $('#datetimepicker2').datetimepicker({
+				pickDate: false,
+				defaultDate:"20:45",
+				language: 'tr'
+				});
+            });
+    </script>
+	<script type="text/javascript">
+            $(function () {
+                $('#datetimepicker3').datetimepicker({
+				pickTime: false,
+				defaultDate:"1.1.2015",
+				language: 'tr'});
+            });
+    </script>
+	<script type="text/javascript">
+            $(function () {
+                $('#datetimepicker4').datetimepicker({
+				pickDate: false,
+				defaultDate:"20:45",
 				language: 'tr'});
             });
     </script>
@@ -220,6 +276,18 @@
 			}
 			else {
 				document.getElementById("max-people").disabled = false;
+			}
+		}
+	</script>
+	<script type="text/javascript">
+		function maxTime(){
+			if (document.getElementById("is-time-unlimited").checked == true){
+				document.getElementById("max-saat").disabled = true;
+				document.getElementById("max-dakika").disabled = true;
+			}
+			else {
+				document.getElementById("max-saat").disabled = false;
+				document.getElementById("max-dakika").disabled = false;
 			}
 		}
 	</script>
