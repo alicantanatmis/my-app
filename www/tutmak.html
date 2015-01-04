@@ -231,13 +231,18 @@ google.maps.event.addDomListener(window, 'load', initialize);
 			  url: "http://nodejs-tutucundan.rhcloud.com/tutturmak",
 			  crossDomain: true, 
 			  ContentType: "x-application/json",
-			  dataType: "jsonp",
+			  dataType: "text/html",
 			  //async: false,
-			  success: function(){
+			  success: function(json){
 				  alert("Success");
 				  //alert("ajax callback response:"+JSON.stringify(json));
 				  //deneme=json;
 				  //alert(deneme);
+				  alert(json);
+				  output = JSON.parse(json);
+				  if(output.result == "loginSuccessful"){
+						window.location.href = "/tutturmak";
+				  }
 				  },
 			  error: function(jqXHR, textStatus, errorThrown){
 					alert("Error");
