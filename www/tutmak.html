@@ -165,6 +165,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 		  <ul class="nav navbar-nav">
 			<li class="active"><a href="#">Tut<span class="sr-only">(current)</span></a></li>
 			<li><a href="#" onclick="goTutturmak()">Tuttur</a></li>
+			<!--<li><a href="http://nodejs-tutucundan.rhcloud.com/tutturmak" >Tuttur</a></li>-->
 		  </ul>
 		</div><!-- /.navbar-collapse -->
 	  </div><!-- /.container-fluid -->
@@ -223,26 +224,27 @@ google.maps.event.addDomListener(window, 'load', initialize);
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="./Theme Template for Bootstrap_files/ie10-viewport-bug-workaround.js"></script>
 	
+	<!--
 	<script type="text/javascript">
+		
+		
 		function goTutturmak(){
 			$.ajax({
 			  type: "GET",
-			  //url: "http://127.0.0.1:80",
+			  //url: "http://127.0.0.1/tutturmak",
 			  url: "http://nodejs-tutucundan.rhcloud.com/tutturmak",
 			  crossDomain: true, 
 			  ContentType: "x-application/json",
-			  dataType: "text/html",
+			  dataType: "html",
 			  //async: false,
-			  success: function(json){
+			  success: function(res){
 				  alert("Success");
 				  //alert("ajax callback response:"+JSON.stringify(json));
 				  //deneme=json;
 				  //alert(deneme);
-				  alert(json);
-				  output = JSON.parse(json);
-				  if(output.result == "loginSuccessful"){
-						window.location.href = "/tutturmak";
-				  }
+				  alert(res);
+				  window.location = "http://nodejs-tutucundan.rhcloud.com/tutturmak";
+				  
 				  },
 			  error: function(jqXHR, textStatus, errorThrown){
 					alert("Error");
@@ -251,6 +253,13 @@ google.maps.event.addDomListener(window, 'load', initialize);
 				}
 			  });
 		}
+		
     </script>
-
+	-->
+	<script type="text/javascript">	
+		function goTutturmak(){
+			window.location = "http://nodejs-tutucundan.rhcloud.com/tutturmak";
+		}
+    </script>	
+	
 <div id="global-zeroclipboard-html-bridge" class="global-zeroclipboard-container" title="" style="position: absolute; left: 0px; top: -9999px; width: 15px; height: 15px; z-index: 999999999;" data-original-title="Copy to clipboard">      <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" id="global-zeroclipboard-flash-bridge" width="100%" height="100%">         <param name="movie" value="/assets/flash/ZeroClipboard.swf?noCache=1417775193061">         <param name="allowScriptAccess" value="sameDomain">         <param name="scale" value="exactfit">         <param name="loop" value="false">         <param name="menu" value="false">         <param name="quality" value="best">         <param name="bgcolor" value="#ffffff">         <param name="wmode" value="transparent">         <param name="flashvars" value="trustedOrigins=getbootstrap.com%2C%2F%2Fgetbootstrap.com%2Chttp%3A%2F%2Fgetbootstrap.com">         <embed src="/assets/flash/ZeroClipboard.swf?noCache=1417775193061" loop="false" menu="false" quality="best" bgcolor="#ffffff" width="100%" height="100%" name="global-zeroclipboard-flash-bridge" allowscriptaccess="sameDomain" allowfullscreen="false" type="application/x-shockwave-flash" wmode="transparent" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="trustedOrigins=getbootstrap.com%2C%2F%2Fgetbootstrap.com%2Chttp%3A%2F%2Fgetbootstrap.com" scale="exactfit">                </object></div><svg xmlns="http://www.w3.org/2000/svg" width="1140" height="500" viewBox="0 0 1140 500" preserveAspectRatio="none" style="visibility: hidden; position: absolute; top: -100%; left: -100%;"><defs></defs><text x="0" y="53" style="font-weight:bold;font-size:53pt;font-family:Arial, Helvetica, Open Sans, sans-serif;dominant-baseline:middle">Thirdslide</text></svg></body></html>
