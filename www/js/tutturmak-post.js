@@ -3,10 +3,13 @@ $('#tuttur').on('submit', function(e) {
 	var formData = $('#tuttur').serializeObject();
 	formData.latitude = markerLat;
 	formData["longitude"] = markerLon;
+	var formDataString = JSON.stringify(formData);
+	//var deneme = {"firstName":"John", "lastName":"Doe"};
+	//var denemeString = JSON.stringify(deneme);
 	$.ajax({
 		type: "POST",
 		url: "http://nodejs-tutucundan.rhcloud.com/tutturmak",
-		data: formData,
+		data: formDataString,
 		crossDomain: true, 
 		contentType: "application/json",
 		dataType: "json",
