@@ -166,6 +166,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 			<li class="active"><a href="#">Tut<span class="sr-only">(current)</span></a></li>
 			<li><a href="#" onclick="goTutturmak()">Tuttur</a></li>
 			<!--<li><a href="http://nodejs-tutucundan.rhcloud.com/tutturmak" >Tuttur</a></li>-->
+			<li><a href="http://nodejs-tutucundan.rhcloud.com/logout" onclick="goLogOut()">Log out</a>
 		  </ul>
 		</div><!-- /.navbar-collapse -->
 	  </div><!-- /.container-fluid -->
@@ -262,6 +263,12 @@ google.maps.event.addDomListener(window, 'load', initialize);
 			window.location = "signin.html";
 			//window.onload = function () {window.location = "tutturmak.html"};
 			//alert(window.location);			
+		}
+    </script>
+		<script type="text/javascript">	
+		function goLogOut(){
+			alert("logging out");
+			window.location = "index.html";	
 		}
     </script>	
 	
