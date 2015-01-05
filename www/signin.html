@@ -39,9 +39,9 @@
 			alert(frame.src);
 			alert(frame.document);
 			alert($("#frame").contents().find("body").html());
-			if(frame.src == "http://nodejs-tutucundan.rhcloud.com/loginSuccessful"){
+			if($("#frame").contents().find("body").html() == "{\"resultFinal":"loginSuccessful\"}"){
 				alert("let's redirect");
-				//window.location = "tutturmak.html";			
+				window.location = "tutturmak.html";			
 			}
 		
 		}
