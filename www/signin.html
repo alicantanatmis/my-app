@@ -39,6 +39,7 @@
 			alert(frame.src);
 			alert(frame.document);
 			alert($("#frame").contents().find("body").html());
+			alert(document.getElementById('frame').contentWindow.location.href);
 			if($("#frame").contents().find("body").html() == "{\"resultFinal\":\"loginSuccessful\"}"){
 				alert("let's redirect");
 				window.location = "tutturmak.html";			
